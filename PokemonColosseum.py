@@ -1,4 +1,5 @@
-
+import Pokemon as p
+import MovesData as md
 
 def StartColosseum():
     pass
