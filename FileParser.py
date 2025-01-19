@@ -1,4 +1,3 @@
-import MovesData as md
 import Pokemon as p
 
 def ParseMoves(movesdata):
