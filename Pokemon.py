@@ -1,3 +1,4 @@
+# class containing definition of pokemon object
 class Pokemon:
     def __init__(self, name, type, hp, attack, defense, moves):
         self.name = name
@@ -7,6 +8,7 @@ class Pokemon:
         self.defense = defense
         self.moves = moves
 
+# class containing definition of move objects
 class Move:
     def __init__(self, name, type, category, contest, pp, power, accuracy):
         self.name = name
