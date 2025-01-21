@@ -1,8 +1,8 @@
 import csv
+import ast
 import Pokemon as p
 
-header = []
-pokemon_moves = {}
+pokemon_moves = []
 pokemon_list = []
 
 # this function likely needs redesign. Not sure how the list of moves in the CSV file will be transferred yet.
@@ -19,9 +19,24 @@ def ParsePokedex(pokedex):
         # loop through each line in the file
         for line in parser:
 
+            # need to parse the list of moves out of the 7th index
+            # use ast.literal_eval() to get the list out of the csv
+            moves = ''
+            end_of = False
+            for token in line:
+                if token[0] == '[':
+                    end_of = True
+                    moves = token
+                elif token[-1] == ']':
+                    end_of = False
+
+            # this line will make string to list
+            # the pokemon moves list value is the list of moves extracted from the csv
+            pokemon_moves = ast.literal_eval(moves)
+
             # create pokemon object for each line in the file
-            curr_mon = p.Pokemon(line[0], line[1], int(line[2]), int(line[3]), 
-                                 int(line[4]), int(line[5]), int(line[6]), line[7])
+            curr_mon = p.Pokemon(line[0], line[1], int(line[2]), int(line[3]), int(line[4]), int(line[5]), int(line[6]), pokemon_moves)
+            
             # add the new pokemon to the list of existing pokemon
             pokedex.append(curr_mon)
 
