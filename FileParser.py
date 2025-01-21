@@ -18,7 +18,8 @@ def ParsePokedex(pokedex):
         next(parser)
         # loop through each line in the file
         for line in parser:
-
+            print("This is the pokemon data:")
+            print(line)
             # need to parse the list of moves out of the 7th index
             # use ast.literal_eval() to get the list out of the csv
             moves = ''
@@ -53,8 +54,14 @@ def ParseMoves(move_set):
         # loop through each line in the file
         for line in parser:
             
+            # print("this is the moves data:")
+            # print(line)
+
+            # this handles type error if accuracy in csv is None
+            accuracy = None if line[6].strip() == 'None' else int(line[6])
+            
             # create move objects
-            curr_move = p.Move(line[0], line[1], line[3], int(line[4]), int(line[5]), int(line[6]))
+            curr_move = p.Move(line[0], line[1], line[2], line[3], int(line[4]), int(line[5]), accuracy)
             # add move object to the list of existing moves
             move_set.append(curr_move)
             

@@ -10,7 +10,7 @@ class Pokemon:
 
 # class containing definition of move objects
 class Move:
-    def __init__(self, name, type, category, contest, pp, power, accuracy):
+    def __init__(self, name, type, category, contest, pp, power, accuracy=None):
         self.name = name
         self.type = type
         self.category = category
