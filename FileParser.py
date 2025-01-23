@@ -20,9 +20,6 @@ def ParsePokedex(pokedex):
         # loop through each line in the file
         for line in parser:
 
-            # print("This is the pokemon data:")
-            # print(line)
-
             # need to parse the list of moves out of the 7th index
             # use ast.literal_eval() to get the list out of the csv
             moves = ''
