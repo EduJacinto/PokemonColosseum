@@ -31,9 +31,9 @@ def damage(move, a, b):
 
     # assign same type attack bonus
     stab = 1.5 if a.type == move.type else 1
-    
+
     # compute the damage that will be dealt by a move
-    damage_dealt = move.power * (a.attack / b.defense) * stab * TypeEfficiency(move, b) * random.random(0.5, 1)
+    damage_dealt = move.power * (a.attack / b.defense) * stab * TypeEfficiency(move, b) * random.uniform(0.5, 1)
     return damage_dealt
 
 def StartColosseum():
