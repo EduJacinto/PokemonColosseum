@@ -40,7 +40,7 @@ def ParsePokedex(pokedex):
 
             # create pokemon object for each line in the file
             curr_mon = p.Pokemon(line[0], line[1], int(line[2]), int(line[3]), int(line[4]), int(line[5]), int(line[6]), pokemon_moves)
-            
+           
             # add the new pokemon to the list of existing pokemon
             pokedex.append(curr_mon)
 
@@ -57,9 +57,6 @@ def ParseMoves(move_set):
 
         # loop through each line in the file
         for line in parser:
-            
-            # print("this is the moves data:")
-            # print(line)
 
             # this handles type error if accuracy in csv is None
             accuracy = None if line[6].strip() == 'None' else int(line[6])
