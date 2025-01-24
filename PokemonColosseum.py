@@ -2,7 +2,7 @@ import Pokemon as p
 import FileParser as fp
 import random
 
-# series of if statements returning type efficiency
+# series of if statements returning type efficiency for a move used
 def TypeEfficiency(move, pokemon):
 
     if move.type == 'Normal':
@@ -26,7 +26,7 @@ def TypeEfficiency(move, pokemon):
     else:
         return 1
     
-
+#  compute damage to be dealt, by pokemon a, to pokemon b
 def damage(move, a, b):
 
     # assign same type attack bonus
@@ -36,12 +36,15 @@ def damage(move, a, b):
     damage_dealt = move.power * (a.attack / b.defense) * stab * TypeEfficiency(move, b) * random.uniform(0.5, 1)
     return damage_dealt
 
+# main game function. Magikarp is the only pokemon that doesn't have 5 moves (1)
 def StartColosseum():
+    # declare the two lists and populate them by parsing the csv files
     pokedex = []
     moves = []
-
     fp.ParseMoves(moves)
     fp.ParsePokedex(pokedex)
+
+    # Now that data is processed, play game
 
 
 if __name__ == "__main__":
