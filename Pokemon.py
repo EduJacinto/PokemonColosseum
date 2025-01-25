@@ -20,3 +20,9 @@ class Move:
         self.pp = pp
         self.power = power
         self.accuracy = accuracy
+
+# create player object
+class Player:
+    def __init__(self, name, team):
+        self.name = name
+        self.team = team

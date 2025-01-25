@@ -46,6 +46,26 @@ def StartColosseum():
 
     # Now that data is processed, play game
 
+    # print the welcome screen
+
+    # take input for the desired player name
+    
+    # then build their team, stored in a queue and create the player object
+
+    # create the Team Rocket team
+
+    # introduce both teams like in the game and declare which pokemon are in their team of three in order
+
+    # let the battle begin
+
+    # coin toss to decide who attacks first print results
+
+    # team rocket decides randomly which attack to use so just print their move and results
+
+    # give player choice of which move to use then print the frame of battle and results
+
+    # each move has pp == 1 until all moves have been used, then pp is replenished
+
 
 if __name__ == "__main__":
     StartColosseum()
