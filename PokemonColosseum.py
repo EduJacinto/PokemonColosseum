@@ -45,10 +45,15 @@ def StartColosseum():
     fp.ParsePokedex(pokedex)
 
     # Now that data is processed, play game
-
-    # print the welcome screen
+    print
+    ( "░█▀█░█▀█░█░█░█▀▀░█▄█░█▀█░█▀█░░░█▀▀░█▀█░█░░░█▀█░█▀▀░█▀▀░█▀▀░█░█░█▄█\n"
+    + "░█▀▀░█░█░█▀▄░█▀▀░█░█░█░█░█░█░░░█░░░█░█░█░░░█░█░▀▀█░▀▀█░█▀▀░█░█░█░█\n"
+    + "░▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░▀░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀" )
 
     # take input for the desired player name
+    player_name = input("What's your name?")
+    print("Welcome to the Pokémon Colosseum," + player_name)
+
     
     # then build their team, stored in a queue and create the player object
 
@@ -65,7 +70,6 @@ def StartColosseum():
     # give player choice of which move to use then print the frame of battle and results
 
     # each move has pp == 1 until all moves have been used, then pp is replenished
-
 
 if __name__ == "__main__":
     StartColosseum()
