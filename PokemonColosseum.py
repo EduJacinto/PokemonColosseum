@@ -53,7 +53,7 @@ def StartColosseum():
 
     # take input for the desired player name
     player_name = input("What's your name?")
-    print("Welcome to the Pokémon Colosseum," + player_name)
+    print("Welcome to the Pokémon Colosseum, " + player_name)
     # create the Team Rocket team, queue
     team_rocket = deque()
 
@@ -78,6 +78,9 @@ def StartColosseum():
     player = p.Player(player_name, player_team)
 
     # introduce both teams like in the game and declare which pokemon are in their team of three in order
+    # this block is fucking printing objects not the strings of the pokemon names
+    print("Team Rocket enters the battlefield with " + team_rocket[0] + team_rocket[1] + team_rocket[2] + "!")
+    print(player.name + " enters with " + player.team[0] + player.team[1] + player.team[2] + "!")
 
     # let the battle begin
 
