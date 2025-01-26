@@ -46,14 +46,11 @@ def StartColosseum():
     fp.ParsePokedex(pokedex)
 
     # Now that data is processed, play game
-    print
-    ( "░█▀█░█▀█░█░█░█▀▀░█▄█░█▀█░█▀█░░░█▀▀░█▀█░█░░░█▀█░█▀▀░█▀▀░█▀▀░█░█░█▄█\n"
-    + "░█▀▀░█░█░█▀▄░█▀▀░█░█░█░█░█░█░░░█░░░█░█░█░░░█░█░▀▀█░▀▀█░█▀▀░█░█░█░█\n"
-    + "░▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░▀░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀" )
+    print( "░█▀█░█▀█░█░█░█▀▀░█▄█░█▀█░█▀█░░░█▀▀░█▀█░█░░░█▀█░█▀▀░█▀▀░█▀▀░█░█░█▄█\n" + "░█▀▀░█░█░█▀▄░█▀▀░█░█░█░█░█░█░░░█░░░█░█░█░░░█░█░▀▀█░▀▀█░█▀▀░█░█░█░█\n" + "░▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░▀░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀" )
 
     # take input for the desired player name
-    player_name = input("What's your name?")
-    print("Welcome to the Pokémon Colosseum, " + player_name)
+    player_name = input("\nWhat's your name?")
+    print("\nWelcome to the Pokémon Colosseum, " + player_name)
     # create the Team Rocket team, queue
     team_rocket = deque()
 
@@ -79,10 +76,13 @@ def StartColosseum():
 
     # introduce both teams like in the game and declare which pokemon are in their team of three in order
     # this block is fucking printing objects not the strings of the pokemon names
-    print("Team Rocket enters the battlefield with " + team_rocket[0].name + ", " + team_rocket[1].name + ", and " + team_rocket[2].name + "!")
-    print(player.name + " enters with " + player.team[0].name + ", " + player.team[1].name + ", and " + player.team[2].name + "!")
+    print("\nTeam Rocket enters the battlefield with " + team_rocket[0].name + ", " + team_rocket[1].name + ", and " + team_rocket[2].name + "!\n")
+    print(player.name + " enters with " + player.team[0].name + ", " + player.team[1].name + ", and " + player.team[2].name + "!\n")
 
-    # let the battle begin
+    # coin toss to decide who attacks first print results
+    coin_toss = "Team Rocket" if random.randint(1, 2) == 1 else player.name
+    print("Let the battle begin!!\n")
+    print("The coin toss goes to ... " + coin_toss)
 
     # coin toss to decide who attacks first print results
 
