@@ -1,6 +1,7 @@
 import Pokemon as p
 import FileParser as fp
 import random
+from collections import dequeue
 
 # series of if statements returning type efficiency for a move used
 def TypeEfficiency(move, pokemon):
@@ -53,11 +54,20 @@ def StartColosseum():
     # take input for the desired player name
     player_name = input("What's your name?")
     print("Welcome to the Pokémon Colosseum," + player_name)
+    # create the Team Rocket team, queue
+    team_rocket = dequeue()
 
-    
+    i = 0
+    while i < 3:
+        # add a random pokemon to the queue
+        rand_pok = random.randint( 0, len(pokedex)-1 )
+        team_rocket.append( pokedex[rand_pok] )
+        pokedex.remove()
+        # only increment i after each pokemon is added to the team_rocket queue
+        i += 1
+    # need to add three pokemon to this queue
+
     # then build their team, stored in a queue and create the player object
-
-    # create the Team Rocket team
 
     # introduce both teams like in the game and declare which pokemon are in their team of three in order
 
