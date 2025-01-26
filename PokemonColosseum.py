@@ -79,8 +79,8 @@ def StartColosseum():
 
     # introduce both teams like in the game and declare which pokemon are in their team of three in order
     # this block is fucking printing objects not the strings of the pokemon names
-    print("Team Rocket enters the battlefield with " + team_rocket[0] + team_rocket[1] + team_rocket[2] + "!")
-    print(player.name + " enters with " + player.team[0] + player.team[1] + player.team[2] + "!")
+    print("Team Rocket enters the battlefield with " + team_rocket[0].name + ", " + team_rocket[1].name + ", and " + team_rocket[2].name + "!")
+    print(player.name + " enters with " + player.team[0].name + ", " + player.team[1].name + ", and " + player.team[2].name + "!")
 
     # let the battle begin
 
