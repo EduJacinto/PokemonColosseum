@@ -62,4 +62,3 @@ def ParseMoves(move_set):
             curr_move = p.Move(line[0], line[1], line[2], line[3], int(line[4]), int(line[5]), accuracy)
             # add move object to the list of existing moves
             move_set.append(curr_move)
-            

@@ -46,7 +46,9 @@ def StartColosseum():
     fp.ParsePokedex(pokedex)
 
     # Now that data is processed, play game
-    print( "░█▀█░█▀█░█░█░█▀▀░█▄█░█▀█░█▀█░░░█▀▀░█▀█░█░░░█▀█░█▀▀░█▀▀░█▀▀░█░█░█▄█\n" + "░█▀▀░█░█░█▀▄░█▀▀░█░█░█░█░█░█░░░█░░░█░█░█░░░█░█░▀▀█░▀▀█░█▀▀░█░█░█░█\n" + "░▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░▀░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀" )
+    print( "░█▀█░█▀█░█░█░█▀▀░█▄█░█▀█░█▀█░░░█▀▀░█▀█░█░░░█▀█░█▀▀░█▀▀░█▀▀░█░█░█▄█\n" +
+           "░█▀▀░█░█░█▀▄░█▀▀░█░█░█░█░█░█░░░█░░░█░█░█░░░█░█░▀▀█░▀▀█░█▀▀░█░█░█░█\n" + 
+           "░▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░▀░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀" )
 
     # take input for the desired player name
     player_name = input("\nWhat's your name?")
@@ -84,12 +86,10 @@ def StartColosseum():
     print("Let the battle begin!!\n")
     print("The coin toss goes to ... " + coin_toss)
 
-    # coin toss to decide who attacks first print results
-
     # team rocket decides randomly which attack to use so just print their move and results
-
     # give player choice of which move to use then print the frame of battle and results
-
+    while True:
+        # if coin toss goes to player then print menu to player else 
     # each move has pp == 1 until all moves have been used, then pp is replenished
 
 if __name__ == "__main__":
