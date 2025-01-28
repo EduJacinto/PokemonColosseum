@@ -39,6 +39,8 @@ def damage(move, a, b):
 
 def player_first(player, opponent):
     # each move has pp == 1 until all moves have been used, then pp is replenished
+    # team rocket decides randomly which attack to use so just print their move and results
+    # give player choice of which move to use then print the frame of battle and results
     while True:
         try:
             # choose 
@@ -48,6 +50,8 @@ def player_first(player, opponent):
 
 def bot_first(player, opponent):
     # each move has pp == 1 until all moves have been used, then pp is replenished
+    # team rocket decides randomly which attack to use so just print their move and results
+    # give player choice of which move to use then print the frame of battle and results
     pass
 
 # main game function. Magikarp is the only pokemon that doesn't have 5 moves (1)
@@ -69,6 +73,7 @@ def StartColosseum():
     # create the Team Rocket team, queue
     team_rocket = deque()
 
+    # I think this could be condensed into one while loop
     i = 0
     while i < 3:
         # add a random pokemon to the queue
@@ -90,7 +95,6 @@ def StartColosseum():
     player.team = player_team
 
     # introduce both teams like in the game and declare which pokemon are in their team of three in order
-    # this block is fucking printing objects not the strings of the pokemon names
     print("\nTeam Rocket enters the battlefield with " + team_rocket[0].name + ", " + team_rocket[1].name + ", and " + team_rocket[2].name + "!\n")
     print(player.name + " enters with " + player.team[0].name + ", " + player.team[1].name + ", and " + player.team[2].name + "!\n")
 
@@ -99,8 +103,6 @@ def StartColosseum():
     print("Let the battle begin!!\n")
     print("The coin toss goes to ... " + coin_toss)
 
-    # team rocket decides randomly which attack to use so just print their move and results
-    # give player choice of which move to use then print the frame of battle and results
     if coin_toss == "Team Rocket":
         bot_first(player, team_rocket)
     elif coin_toss == player.name:
