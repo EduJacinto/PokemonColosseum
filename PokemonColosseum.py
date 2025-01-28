@@ -36,38 +36,84 @@ def damage(move, a, b):
     damage_dealt = move.power * (a.attack / b.defense) * stab * TypeEfficiency(move, b) * random.uniform(0.5, 1)
     return damage_dealt
 
+def player_turn(player_pokemon, bot):
+    # choose the move that will be used
+    # do the math on damage
+    # assign damage to the opp pokemon
+    # if the pokemon faints, back to pokeball and send dout the next one
+    # randomly choose which move the opp will use
+    # calc damage and aassign it to the player's pokemon
+    pass
+
+def bot_turn(player_pokemon, bot):
+    # randomly choose the bot's next move
+    # calc damage and assign to the player hp
+    # if player curr pokemon faints, then pop the next one off of the deque
+    pass
 
 def player_first(player, opponent):
     # each move has pp == 1 until all moves have been used, then pp is replenished
     # team rocket decides randomly which attack to use so just print their move and results
     # give player choice of which move to use then print the frame of battle and results
     while True:
-        try:
-            # choose 
-            print("Choose which move to use")
-            curr_player_pokemon = player.team.popleft()
-            curr_rocket_pokemon = opponent.popleft()
+        curr_player_pokemon = player.team.popleft()
+        curr_rocket_pokemon = opponent.popleft()
 
-            # while both teams still have pokemon, continue battle
-            while player.team and opponent:
-                # if one pokemon faints, bring out the next one up
-                if curr_player_pokemon.hp <= 0:
-                    print(curr_player_pokemon.name + " fainted and returned to its pokéball!")
-                    curr_player_pokemon = player.team.popleft()
-
-                elif curr_rocket_pokemon.hp <= 0:
-                    print(curr_rocket_pokemon.name + " fainted and returned to its pokéball")
-                    curr_rocket_pokemon = opponent.popleft()
+        # while both teams still have pokemon, continue battle
+        while player.team and opponent:
+            
+            player_turn(curr_player_pokemon, curr_rocket_pokemon)
+            if curr_rocket_pokemon.hp <= 0:
+                print("\n" + curr_rocket_pokemon.name + " fainted and returned to its pokéball")
                 
-
-        except ValueError:
-            pass
+                if not opponent:
+                    print("\nAll of Team Rocket's pokémon fainted! " + player.name + " wins the match!")
+                else:
+                    curr_rocket_pokemon = opponent.popleft()
+           
+            bot_turn(curr_player_pokemon, curr_rocket_pokemon)
+            
+            if curr_player_pokemon.hp <= 0:
+                print("\n" + curr_player_pokemon.name + " fainted and returned to its pokéball!")
+                
+                if not player.team:
+                    print("\nAll of " + player.name + "'s pokémon fainted! Team Rocket wins the match!")
+                else:
+                    curr_player_pokemon = player.team.popleft()
 
 def bot_first(player, opponent):
     # each move has pp == 1 until all moves have been used, then pp is replenished
     # team rocket decides randomly which attack to use so just print their move and results
     # give player choice of which move to use then print the frame of battle and results
-    pass
+    while True:
+        curr_player_pokemon = player.team.popleft()
+        curr_rocket_pokemon = opponent.popleft()
+
+        # while both teams still have pokemon, continue battle
+        while player.team and opponent:
+            
+            # team rocket's turn. check if the player's pokemon fainted.
+            bot_turn(curr_player_pokemon, curr_rocket_pokemon)
+            
+            if curr_player_pokemon.hp <= 0:
+                print("\n" + curr_player_pokemon.name + " fainted and returned to its pokéball!")
+                
+                if not player.team:
+                    print("\nAll of " + player.name + "'s pokémon fainted! Team Rocket wins the match!")
+                else:
+                    curr_player_pokemon = player.team.popleft()
+
+            # player's turn. check if bot's pokemon fainted.
+            player_turn(curr_player_pokemon, curr_rocket_pokemon)
+
+            if curr_rocket_pokemon.hp <= 0:
+                print("\n" + curr_rocket_pokemon.name + " fainted and returned to its pokéball")
+                
+                if not opponent:
+                    print("\nAll of Team Rocket's pokémon fainted! " + player.name + " wins the match!")
+                else:
+                    curr_rocket_pokemon = opponent.popleft()
+           
 
 # main game function. Magikarp is the only pokemon that doesn't have 5 moves (1)
 def StartColosseum():
