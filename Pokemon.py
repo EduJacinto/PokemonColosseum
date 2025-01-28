@@ -23,6 +23,6 @@ class Move:
 
 # create player object
 class Player:
-    def __init__(self, name, team):
+    def __init__(self, name, team=None):
         self.name = name
         self.team = team

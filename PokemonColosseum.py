@@ -37,6 +37,19 @@ def damage(move, a, b):
     damage_dealt = move.power * (a.attack / b.defense) * stab * TypeEfficiency(move, b) * random.uniform(0.5, 1)
     return damage_dealt
 
+def player_first(player, opponent):
+    # each move has pp == 1 until all moves have been used, then pp is replenished
+    while True:
+        try:
+            # choose 
+            print("Choose which move to use")
+        except ValueError:
+            pass
+
+def bot_first(player, opponent):
+    # each move has pp == 1 until all moves have been used, then pp is replenished
+    pass
+
 # main game function. Magikarp is the only pokemon that doesn't have 5 moves (1)
 def StartColosseum():
     # declare the two lists and populate them by parsing the csv files
@@ -51,8 +64,8 @@ def StartColosseum():
            "░▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░▀░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀" )
 
     # take input for the desired player name
-    player_name = input("\nWhat's your name?")
-    print("\nWelcome to the Pokémon Colosseum, " + player_name)
+    player = p.Player( input("\nWhat's your name?") )
+    print("\nWelcome to the Pokémon Colosseum, " + player.name)
     # create the Team Rocket team, queue
     team_rocket = deque()
 
@@ -73,8 +86,8 @@ def StartColosseum():
         rand_pok = random.randint( 0, len(pokedex) - 1 )
         player_team.append( pokedex.pop(rand_pok) )
         i += 1
-    # create player object
-    player = p.Player(player_name, player_team)
+    # complete player object
+    player.team = player_team
 
     # introduce both teams like in the game and declare which pokemon are in their team of three in order
     # this block is fucking printing objects not the strings of the pokemon names
@@ -88,9 +101,11 @@ def StartColosseum():
 
     # team rocket decides randomly which attack to use so just print their move and results
     # give player choice of which move to use then print the frame of battle and results
-    while True:
-        # if coin toss goes to player then print menu to player else 
-    # each move has pp == 1 until all moves have been used, then pp is replenished
+    if coin_toss == "Team Rocket":
+        bot_first(player, team_rocket)
+    elif coin_toss == player.name:
+        player_first(player, team_rocket)
+
 
 if __name__ == "__main__":
     StartColosseum()
