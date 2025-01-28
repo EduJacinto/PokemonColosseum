@@ -29,13 +29,13 @@ def TypeEfficiency(move, pokemon):
     
 #  compute damage to be dealt, by pokemon a, to pokemon b
 def damage(move, a, b):
-
     # assign same type attack bonus
     stab = 1.5 if a.type == move.type else 1
 
     # compute the damage that will be dealt by a move
     damage_dealt = move.power * (a.attack / b.defense) * stab * TypeEfficiency(move, b) * random.uniform(0.5, 1)
     return damage_dealt
+
 
 def player_first(player, opponent):
     # each move has pp == 1 until all moves have been used, then pp is replenished
@@ -45,6 +45,21 @@ def player_first(player, opponent):
         try:
             # choose 
             print("Choose which move to use")
+            curr_player_pokemon = player.team.popleft()
+            curr_rocket_pokemon = opponent.popleft()
+
+            # while both teams still have pokemon, continue battle
+            while player.team and opponent:
+                # if one pokemon faints, bring out the next one up
+                if curr_player_pokemon.hp <= 0:
+                    print(curr_player_pokemon.name + " fainted and returned to its pokéball!")
+                    curr_player_pokemon = player.team.popleft()
+
+                elif curr_rocket_pokemon.hp <= 0:
+                    print(curr_rocket_pokemon.name + " fainted and returned to its pokéball")
+                    curr_rocket_pokemon = opponent.popleft()
+                
+
         except ValueError:
             pass
 
