@@ -122,7 +122,7 @@ def StartColosseum():
     pokedex = []
     moves = []
     fp.ParseMoves(moves)
-    fp.ParsePokedex(pokedex)
+    fp.ParsePokedex(pokedex, moves)
 
     # Now that data is processed, play game
     print( "░█▀█░█▀█░█░█░█▀▀░█▄█░█▀█░█▀█░░░█▀▀░█▀█░█░░░█▀█░█▀▀░█▀▀░█▀▀░█░█░█▄█\n" +
