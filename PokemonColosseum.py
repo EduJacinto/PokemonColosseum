@@ -36,20 +36,55 @@ def damage(move, a, b):
     damage_dealt = move.power * (a.attack / b.defense) * stab * TypeEfficiency(move, b) * random.uniform(0.5, 1)
     return damage_dealt
 
-def player_turn(player_pokemon, bot):
+def player_turn(player_pokemon, rocket_pokemon):
     # choose the move that will be used
     # do the math on damage
     # assign damage to the opp pokemon
     # if the pokemon faints, back to pokeball and send dout the next one
     # randomly choose which move the opp will use
     # calc damage and aassign it to the player's pokemon
-    pass
 
-def bot_turn(player_pokemon, bot):
+    # Check if all moves have been used. If so, restore all moves and clear the used moves deque.
+    if not player_pokemon.moves:
+        player_pokemon.moves = deque(player_pokemon.used_moves)
+        player_pokemon.used_moves.clear()
+
+    while True:
+        try:
+            print(f"Choose the move that {player_pokemon.name} will use:")
+            for i, move in enumerate(player_pokemon.moves):
+                print(f"{i + 1}. {move.name}")
+            
+            choice = int(input()) - 1
+            
+            if 0 <= choice < len(player_pokemon.moves):
+                break
+            
+        except ValueError:
+            print(f"{player_first.name} does not understand what you mean! Try again.")
+    
+    used_move = player_pokemon.moves[choice]
+    del player_pokemon.moves[choice]
+    player_pokemon.used_moves.append(used_move)
+
+    damage_dealt = damage(used_move, player_pokemon, rocket_pokemon)
+    rocket_pokemon.hp -= damage_dealt
+    print(f"{player_pokemon.name} used {used_move.name}!\nIt dealt {damage_dealt} damage to {rocket_pokemon.name}!")
+
+
+def bot_turn(player_pokemon, rocket_pokemon):
     # randomly choose the bot's next move
     # calc damage and assign to the player hp
     # if player curr pokemon faints, then pop the next one off of the deque
-    pass
+    if not rocket_pokemon.moves:
+        rocket_pokemon.moves = deque(rocket_pokemon.used_moves)
+        rocket_pokemon.used_moves.clear()
+
+    used_move = random.choice(rocket_pokemon.moves)
+    rocket_pokemon.moves.remove(used_move)
+    damage_dealt = damage(used_move, rocket_pokemon, player_pokemon)
+    player_pokemon.hp -= damage_dealt
+    print(f"Team Rocket's {rocket_pokemon.name} used {used_move.name}!\nIt dealt {damage_dealt} damage to {player_pokemon.name}!")
 
 def player_first(player, opponent):
     # each move has pp == 1 until all moves have been used, then pp is replenished

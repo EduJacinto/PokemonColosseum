@@ -1,3 +1,4 @@
+from collections import deque
 # class containing definition of pokemon object
 class Pokemon:
     def __init__(self, name, type, hp, attack, defense, height, weight, moves):
@@ -9,6 +10,7 @@ class Pokemon:
         self.height = height
         self.weight = weight
         self.moves = moves
+        self.used_moves = deque()
 
 # class containing definition of move objects
 class Move:
