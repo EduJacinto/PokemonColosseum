@@ -9,7 +9,7 @@ class Pokemon:
         self.defense = defense
         self.height = height
         self.weight = weight
-        self.moves = moves
+        self.moves = deque(moves)
         self.used_moves = deque()
 
 # class containing definition of move objects
