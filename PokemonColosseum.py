@@ -53,9 +53,11 @@ def player_turn(player_pokemon, rocket_pokemon):
             
             if 0 <= choice < len(player_pokemon.moves):
                 break
+            else:
+                print(f"{player_pokemon.name} does not understand what you mean! Try again.\n")
             
         except ValueError:
-            print(f"{player_pokemon.name} does not understand what you mean! Try again.")
+            print(f"{player_pokemon.name} does not understand what you mean! Try again.\n")
     
     used_move = player_pokemon.moves[choice]
     del player_pokemon.moves[choice]
@@ -78,6 +80,7 @@ def bot_turn(player_pokemon, rocket_pokemon):
     player_pokemon.hp -= damage_dealt
     print(f"Team Rocket's {rocket_pokemon.name} used {used_move.name}!\nIt dealt { int(damage_dealt) } damage to {player_pokemon.name}!")
 
+# game flow if player is to go first
 def player_first(player, opponent_team):
     
     curr_player_pokemon = player.team.popleft()
@@ -89,6 +92,7 @@ def player_first(player, opponent_team):
         # player's turn. check if bot's pokemon fainted.
         player_turn(curr_player_pokemon, curr_rocket_pokemon)
 
+        # check if team rocket pokemon fainted and then if they are all fainted
         if curr_rocket_pokemon.hp <= 0:
             print("\n" + curr_rocket_pokemon.name + " fainted and returned to its pokéball!\n")
             
@@ -102,6 +106,7 @@ def player_first(player, opponent_team):
         # team rocket's turn. check if the player's pokemon fainted.
         bot_turn(curr_player_pokemon, curr_rocket_pokemon)
         
+        # check if player's pokemon fainted, and then if all of them fainted
         if curr_player_pokemon.hp <= 0:
             print("\n" + curr_player_pokemon.name + " fainted and returned to its pokéball!")
             
@@ -123,6 +128,7 @@ def bot_first(player, opponent_team):
         # team rocket's turn. check if the player's pokemon fainted.
         bot_turn(curr_player_pokemon, curr_rocket_pokemon)
         
+        # check if player's pokemon fainted, and then if all of them fainted
         if curr_player_pokemon.hp <= 0:
             print("\n" + curr_player_pokemon.name + " fainted and returned to its pokéball!")
             
@@ -136,6 +142,7 @@ def bot_first(player, opponent_team):
         # player's turn. check if bot's pokemon fainted.
         player_turn(curr_player_pokemon, curr_rocket_pokemon)
 
+        # check if team rocket pokemon fainted and then if they are all fainted
         if curr_rocket_pokemon.hp <= 0:
             print("\n" + curr_rocket_pokemon.name + " fainted and returned to its pokéball")
             
@@ -197,6 +204,7 @@ def StartColosseum():
     print("The coin toss goes to ... " + coin_toss)
     print("Let the battle begin!!\n")
 
+    # start battle depending on coin toss
     if coin_toss == "Team Rocket":
         bot_first(player, team_rocket)
     elif coin_toss == player.name:
