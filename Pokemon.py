@@ -1,4 +1,5 @@
 from collections import deque
+
 # class containing definition of pokemon object
 class Pokemon:
     def __init__(self, name, type, hp, attack, defense, height, weight, moves):

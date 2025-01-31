@@ -162,35 +162,40 @@ def StartColosseum():
     fp.ParseMoves(moves)
     fp.ParsePokedex(pokedex, moves)
 
-    # Now that data is processed, play game
+    # Now that data is processed, start game by printing the title
     print( "░█▀█░█▀█░█░█░█▀▀░█▄█░█▀█░█▀█░░░█▀▀░█▀█░█░░░█▀█░█▀▀░█▀▀░█▀▀░█░█░█▄█\n" +
            "░█▀▀░█░█░█▀▄░█▀▀░█░█░█░█░█░█░░░█░░░█░█░█░░░█░█░▀▀█░▀▀█░█▀▀░█░█░█░█\n" + 
            "░▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░▀░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀" )
 
-    # take input for the desired player name
+    # take input for the desired player name, trim white space, and welcome player
     player = p.Player(input("\nWhat's your name?").strip() )
     print("\nWelcome to the Pokémon Colosseum, " + player.name)
-    # create the Team Rocket team, queue
+
+    # create the Team Rocket team, deque
     team_rocket = deque()
 
-    # I think this could be condensed into one while loop
+
     i = 0
     while i < 3:
+
         # add a random pokemon to the queue
         rand_pok = random.randint( 0, len(pokedex)-1 )
+
         # append to the queue by popping the generated index off of the pokedex list. Ensures that all pokemon are unique.
         team_rocket.append( pokedex.pop(rand_pok) )
         
         # only increment i after each pokemon is added to the team_rocket queue
         i += 1
 
-    # then build the player team, stored in a queue and create the player object
+    # then build the player team, stored in a dequeue and create the player object
     player_team = deque()
+
     i = 0
     while i < 3:
         rand_pok = random.randint( 0, len(pokedex) - 1 )
         player_team.append( pokedex.pop(rand_pok) )
         i += 1
+
     # complete player object
     player.team = player_team
 
